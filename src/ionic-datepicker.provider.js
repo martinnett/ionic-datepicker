@@ -14,7 +14,8 @@ angular.module('ionic-datepicker.provider', [])
       templateType: 'popup',
       showTodayButton: false,
       closeOnSelect: false,
-      disableWeekdays: []
+      disableWeekdays: [],
+      disableUntil: null
     };
 
     this.configDatePicker = function (inputObj) {
@@ -240,6 +241,10 @@ angular.module('ionic-datepicker.provider', [])
       $scope.closeIonicDatePickerModal = function () {
         closeModal();
       };
+
+      $scope.isDisableDates = function() {
+        return $scope.currentDate <= $scope.mainObj.disableUntil;
+      }
 
       //Open datepicker popup
       provider.openDatePicker = function (ipObj) {
